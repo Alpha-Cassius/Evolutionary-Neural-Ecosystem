@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evolutionary Neural Ecosystem</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="/eel.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar panel">
+            <h1>NEURAL <span style="font-weight: 300">ECOSYSTEM</span></h1>
+            <div class="controls">
+                <button id="btnInit" class="primary">Reset Evolution</button>
+                <button id="btnToggle" class="secondary">Pause</button>
+            </div>
+            <div class="stats">
+                <div class="stat"><span class="label">PREY</span> <span id="statPrey" class="value text-accent">0</span></div>
+                <div class="stat"><span class="label">PREDATORS</span> <span id="statPred" class="value shark-color">0</span></div>
+                <div class="stat"><span class="label">TICKS</span> <span id="statTicks" class="value">0</span></div>
+            </div>
+            <div class="legend">
+                <div class="legend-item"><div class="box agent-box"></div>Prey</div>
+                <div class="legend-item"><div class="box shark-box"></div>Predator</div>
+                <div class="legend-item"><div class="box food-box"></div>Food</div>
+            </div>
+        </div>
+        
+        <div class="canvas-container panel">
+            <canvas id="simCanvas"></canvas>
+        </div>
+        
+        <div class="charts-container">
+            <div class="graph-panel panel">
+                <div class="chart-title">Population</div>
+                <div class="chart-wrapper">
+                    <canvas id="populationChart"></canvas>
+                </div>
+            </div>
+            <div class="graph-panel panel">
+                <div class="chart-title">Average Energy</div>
+                <div class="chart-wrapper">
+                    <canvas id="energyChart"></canvas>
+                </div>
+            </div>
+            <div class="graph-panel panel">
+                <div class="chart-title">Average Speed</div>
+                <div class="chart-wrapper">
+                    <canvas id="speedChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
