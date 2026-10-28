@@ -5,7 +5,7 @@
 <br/>
 <br/>
 
-<h1>🧬 Evolutionary Neural Ecosystem 🦈🐟</h1>
+<h1>Evolutionary Neural Ecosystem </h1>
 
 **An advanced, interactive, real-time Machine Learning simulation where Predators (sharks) and Prey (fish) evolve inside a continuous 2D physics engine.**
 
