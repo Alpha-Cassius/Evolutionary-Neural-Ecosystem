@@ -117,12 +117,12 @@ To run the simulation locally on your machine and watch evolution happen in real
 1. **Ensure Python is installed** (Python 3.8+ recommended).
 2. **Clone the repository** and navigate to the project folder.
 3. **Install the dependencies**:
-   ```bash
+```bash
    pip install eel numpy
+```
 4. **Launch the ecosystem**:
   ```bash
   python main.py
-  
   ```
 
 
