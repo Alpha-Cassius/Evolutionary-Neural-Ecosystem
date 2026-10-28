@@ -120,10 +120,10 @@ To run the simulation locally on your machine and watch evolution happen in real
    ```bash
    pip install eel numpy
 4. **Launch the ecosystem**:
-```bash
-python main.py
-
-```
+  ```bash
+  python main.py
+  
+  ```
 
 
 5. A Google Chrome or Microsoft Edge window will launch automatically.
