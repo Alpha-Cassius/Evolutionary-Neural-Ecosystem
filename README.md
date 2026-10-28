@@ -1,104 +1,146 @@
-# Evolutionary Neural Ecosystem 🦈🐟
+<div align="center">
 
-An advanced, interactive, real-time Machine Learning simulation where Predators (sharks) and Prey (fish) evolve inside a continuous 2D physics engine. 
+<img src="https://iso.500px.com/wp-content/uploads/2015/02/parting_cover.jpeg" width="700" alt="School of fish underwater representing evolutionary neural ecosystem" style="border-radius: 15px;" />
 
-This project explores the intersection of **Genetic Algorithms**, **Neural Networks**, and **Artificial Life**, challenging agents to learn complex social behaviors like Boids flocking and solitary hunting organically over time.
+<br/>
+<br/>
 
----
+<h1>🧬 Evolutionary Neural Ecosystem 🦈🐟</h1>
 
-## 🚀 Key Features & Architectural Highlights
+**An advanced, interactive, real-time Machine Learning simulation where Predators (sharks) and Prey (fish) evolve inside a continuous 2D physics engine.**
 
-### 1. Zero-Dependency Neural Networks (NumPy Only)
-Rather than relying on heavy frameworks like PyTorch or TensorFlow, the "brains" of every single agent in this simulation are built entirely from scratch using raw matrix math in `numpy`. 
-- **Feed-Forward Architecture**: A simple but effective multi-layer perceptron (MLP). 
-- **Activation Functions**: Uses `tanh` to map outputs between `-1` and `1`, allowing agents to steer left/right and accelerate/brake smoothly.
-- **Fast Execution**: NumPy vectorization allows hundreds of independent neural networks to be evaluated simultaneously in real-time.
+<p>
+<a href="https://github.com/alpha-cassius"><img src="https://img.shields.io/badge/AUTHOR-Vaibhav_Pandey-8a2be2?style=for-the-badge&amp;labelColor=0d1117" alt="AUTHOR" /></a> 
+<a href="https://github.com/alpha-cassius?tab=repositories"><img src="https://img.shields.io/badge/OPEN_SOURCE-00d2ff?style=for-the-badge&amp;labelColor=0d1117" alt="OPEN SOURCE" /></a> 
+<img src="https://img.shields.io/badge/AI-NEURAL_NETWORKS-34d399?style=for-the-badge&amp;labelColor=0d1117" alt="AI NEURAL NETWORKS" />
+</p>
 
-### 2. Continuous Organic Evolution (Genetic Algorithm)
-Most ML simulations use rigid "Generation" resets where the entire population dies, the fittest are selected, and the simulation restarts. This project uses a **Continuous Evolution** model:
-- Agents expend **Energy** to move, turn, and simply exist (baseline metabolic drain).
-- When agents consume their respective food source, they gain Energy.
-- **Reproduction**: If an agent is successful enough to push its Energy past a critical threshold (`1.5`), it instantly undergoes mitosis. It splits its energy with a new offspring, passing down its neural weights with a slight gaussian mutation applied.
-- This creates an organic ecosystem where species adapt dynamically in real-time. 
-
-### 3. Machine-Learned "Boids" Flocking
-The Prey agents are capable of evolving complex schooling behaviors to evade predators. They are fed specific environmental inputs inspired by Craig Reynolds' Boids model:
-- **Cohesion**: Prey calculate the "Center of Mass" of all neighboring prey within a certain radius. They can use this input to learn to steer towards the flock.
-- **Separation**: Prey sense the exact distance and angle of their closest neighbor, allowing them to learn not to collide.
-- Through evolutionary pressure (Predators eating isolated prey), the prey naturally learn to school together!
-
-### 4. Continuous Physics Engine
-The environment is not a rigid grid (like cellular automata or the classic Wa-Tor model). Agents exist in a continuous 2D plane equipped with:
-- **Kinematics**: Angular velocity, forward thrust, and inertial drag/friction.
-- **Varying Biological Limits**: Predators have higher top speeds but slower turn rates. Prey are highly agile but have lower top speeds. 
-
-### 5. Advanced Analytical Dashboard
-The backend is bridged to a modern web frontend via `Eel`. The dashboard uses `Chart.js` to plot live data streams from the Python backend:
-- **Population Tracker**: Watch the predator-prey balance naturally ebb and flow in a classic Lotka-Volterra cycle.
-- **Average Energy**: Monitor the metabolic health of both species.
-- **Average Speed**: Observe evolutionary selection in real-time as the ecosystem selects for faster and more efficient swimmers.
+<p><b>Exploring the intersection of Genetic Algorithms, Neural Networks, and Artificial Life.</b></p>
 
 ---
 
-## 🧠 Deep Dive: The Agent Senses
+</div>
 
-Both species are governed by Neural Networks with a Hidden Layer size of `12`, but their input senses differ based on their ecological niche.
+## ✨ About The Project
 
-### Prey Neural Network (9 Inputs)
-Prey are the gatherers. They eat stationary green "Food" dots and flee from Predators.
-1. `Distance to nearest Food`
-2. `Angle to nearest Food`
-3. `Distance to nearest Predator`
-4. `Angle to nearest Predator`
-5. `Distance to nearest Prey (Separation)`
-6. `Angle to nearest Prey (Separation)`
-7. `Distance to Flock Center of Mass (Cohesion)`
-8. `Angle to Flock Center of Mass (Cohesion)`
-9. `Bias Unit` (Always 1.0)
+This simulation challenges AI agents to learn complex social behaviors—like Boids flocking and solitary hunting—organically over time. Instead of relying on pre-programmed rules, the agents must survive, eat, and reproduce. Through the pressures of natural selection and continuous evolution, raw matrix math transforms into life-like biological behaviors.
 
-### Predator Neural Network (5 Inputs)
-Predators are apex hunters. They eat moving Prey. They have senses allowing them to detect other predators so they can learn to hunt solitarily and avoid competing for the same meal.
-1. `Distance to nearest Prey`
-2. `Angle to nearest Prey`
-3. `Distance to nearest Predator (Territoriality)`
-4. `Angle to nearest Predator (Territoriality)`
-5. `Bias Unit` (Always 1.0)
+<br/>
 
-Both networks output exactly 2 values:
-- `Thrust`: Mapped from 0 to 1, determining forward acceleration.
-- `Turn Rate`: Mapped from -1 to 1, determining angular velocity (steering left or right).
+## 🚀 Architectural Highlights
 
----
+<table width="100%">
+<tr>
+<td width="50%" valign="top">
+  <h3>🧠 Zero-Dependency NNs</h3>
+  <p>The "brains" of every single agent are built entirely from scratch using raw matrix math in <code>numpy</code> (no PyTorch/TensorFlow). Uses a multi-layer perceptron (MLP) with <code>tanh</code> activation for smooth steering and acceleration.</p>
+</td>
+<td width="50%" valign="top">
+  <h3>🧬 Continuous Evolution</h3>
+  <p>Instead of rigid "Generation" resets, this uses a <b>Continuous Evolution</b> model. Agents expend energy to move. If they eat enough to pass a threshold, they instantly undergo mitosis, passing down slightly mutated neural weights.</p>
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+  <h3>🐟 Machine-Learned "Boids"</h3>
+  <p>Prey are fed environmental inputs inspired by Craig Reynolds' Boids model (Cohesion & Separation). Through evolutionary pressure from predators, they naturally learn to school together to survive.</p>
+</td>
+<td width="50%" valign="top">
+  <h3>🌊 Continuous Physics Engine</h3>
+  <p>Agents exist in a continuous 2D plane (not a grid). The engine calculates angular velocity, forward thrust, inertial drag, and biological limits (e.g., Predators are faster but turn slower than Prey).</p>
+</td>
+</tr>
+</table>
+
+### 📊 Advanced Analytical Dashboard
+The Python backend is bridged to a modern web frontend via `Eel`. A real-time dashboard uses `Chart.js` to plot live data streams:
+*   **Population Tracker:** Watch the predator-prey balance naturally ebb and flow in a classic Lotka-Volterra cycle.
+*   **Average Energy:** Monitor the metabolic health of both species.
+*   **Average Speed:** Observe evolutionary selection in real-time as the ecosystem selects for faster, more efficient swimmers.
+
+<br/>
+
+## 🔬 Deep Dive: The Agent Senses
+
+Both species are governed by Neural Networks with a Hidden Layer size of `12`, but their input senses differ strictly based on their ecological niche. Both networks output exactly 2 values: **Thrust** (0 to 1) and **Turn Rate** (-1 to 1).
+
+<table width="100%">
+<tr>
+<td width="50%" valign="top">
+  <h3>🟢 Prey Network (9 Inputs)</h3>
+  <i>Prey are gatherers. They eat stationary food and flee predators.</i>
+  <ol>
+    <li>Distance to nearest Food</li>
+    <li>Angle to nearest Food</li>
+    <li>Distance to nearest Predator</li>
+    <li>Angle to nearest Predator</li>
+    <li>Distance to nearest Prey <i>(Separation)</i></li>
+    <li>Angle to nearest Prey <i>(Separation)</i></li>
+    <li>Distance to Flock Center <i>(Cohesion)</i></li>
+    <li>Angle to Flock Center <i>(Cohesion)</i></li>
+    <li>Bias Unit <i>(Always 1.0)</i></li>
+  </ol>
+</td>
+<td width="50%" valign="top">
+  <h3>🔴 Predator Network (5 Inputs)</h3>
+  <i>Predators are apex hunters. They eat moving Prey and avoid competing.</i>
+  <ol>
+    <li>Distance to nearest Prey</li>
+    <li>Angle to nearest Prey</li>
+    <li>Distance to nearest Predator <i>(Territoriality)</i></li>
+    <li>Angle to nearest Predator <i>(Territoriality)</i></li>
+    <li>Bias Unit <i>(Always 1.0)</i></li>
+  </ol>
+  <br/><br/>
+</td>
+</tr>
+</table>
+
+<br/>
 
 ## 🛠️ Tech Stack
 
-- **Python 3.x**: Core simulation loop and physics engine.
-- **NumPy**: Neural Network matrix multiplication and weight initialization.
-- **Eel**: A lightweight Python library for hosting the local web server and establishing a bi-directional WebSocket connection between Python and JS.
-- **HTML5 Canvas & JavaScript**: High-performance rendering of the continuous 2D space.
-- **Chart.js**: Dynamic, real-time data visualization.
+| Component | Technology | Description |
+| :--- | :--- | :--- |
+| **Backend & Physics** | Python 3.x | Core simulation loop and 2D kinematic physics engine. |
+| **AI Math** | NumPy | Neural Network matrix multiplication and weight initialization. |
+| **Bridge** | Eel | Lightweight local web server & bi-directional WebSocket connection. |
+| **Rendering** | HTML5 Canvas / JS | High-performance visual rendering of the continuous 2D space. |
+| **Data Viz** | Chart.js | Dynamic, real-time data visualization on the dashboard. |
 
----
+<br/>
 
 ## 🎮 Installation and Usage
 
-To run the simulation locally on your machine:
+To run the simulation locally on your machine and watch evolution happen in real-time:
 
-1. **Clone the repository** or download the project files.
-2. **Ensure Python is installed** (Python 3.8+ recommended).
+1. **Ensure Python is installed** (Python 3.8+ recommended).
+2. **Clone the repository** and navigate to the project folder.
 3. **Install the dependencies**:
    ```bash
    pip install eel numpy
-   ```
+
+```
+
 4. **Launch the ecosystem**:
-   ```bash
-   python main.py
-   ```
-5. A Google Chrome or Microsoft Edge window will automatically launch. 
+```bash
+python main.py
+
+```
+
+
+5. A Google Chrome or Microsoft Edge window will launch automatically.
 6. **Watch them learn!** The initial agents will be completely uncoordinated. Over thousands of ticks, you will watch them evolve to swim smoothly, hunt efficiently, and school together!
 
-*(Note: If the simulation slows down, you can reduce the `NUM_PREY` and `NUM_FOOD` constants in `main.py`.)*
+> *Note: If the simulation slows down, you can reduce the `NUM_PREY` and `NUM_FOOD` constants in `main.py`.*
 
 ---
 
-Made with 💖 and ☕ by Vaibhav Pandey!
+## 🤝 Let's Connect
+
+
+
+
+
+
+Made with 💖 and ☕ by Vaibhav Pandey
